@@ -7,5 +7,8 @@
 
 <script setup lang="ts">
 import Prose from "~/components/Prose.vue"
-</script>
 
+useHead({
+  title: 'Bookmarks',
+})
+</script>

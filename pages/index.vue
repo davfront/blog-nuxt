@@ -20,4 +20,8 @@
 
 <script setup lang="ts">
 import Prose from "~/components/Prose.vue"
+
+useHead({
+  title: '',
+})
 </script>

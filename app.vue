@@ -16,4 +16,8 @@
   nuxtApp.hook("page:finish", () => {
      window.scrollTo(0, 0)
   })
+
+  useHead({
+    titleTemplate: title => title ? `${title} - David Pereira` : 'David Pereira',
+  })
 </script>

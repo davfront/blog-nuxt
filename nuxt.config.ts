@@ -6,9 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
   ],
-  head: {
-    titleTemplate: '%s - David Pereira',
-  },
   content: {
     highlight: {
       theme: 'github-dark',
