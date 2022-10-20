@@ -2,7 +2,7 @@
   <div class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
     <LayoutHeader />
     <main class="flex justify-center">
-      <div class="w-full max-w-2xl m-8 md:my-16">
+      <div class="flex-auto min-w-0 max-w-2xl mx-6 my-12 md:mx-8 md:my-16">
         <slot />
       </div>
     </main>

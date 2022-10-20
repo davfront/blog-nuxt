@@ -89,13 +89,17 @@ const tw = reactive({
     // dark
     'dark:bg-gray-900 dark:bg-opacity-75 dark:border-white dark:border-opacity-10',
   ],
-  headerContainer: 'px-8 h-16 flex items-center',
+  headerContainer: [
+    'px-6 h-16 flex items-center',
+    // desktop
+    'md:px-8',
+  ],
   headerBrand: 'block mr-auto',
   headerLogo: 'h-8 fill-primary',
   headerNav: '-mr-2 flex items-center relative group',
   headerNavToggle: [
     'flex items-center',
-    'p-4 -mx-4',
+    'p-4 -mr-2',
     'text-2xl cursor-pointer',
     'transition-colors hover:text-primary-500 focus:text-primary-500',
     // desktop
@@ -103,7 +107,7 @@ const tw = reactive({
   ],
   headerNavPopover: [
     'absolute z-10 top-full right-0 w-56',
-    'py-2 -mr-2 -mt-1',
+    'py-2 -mt-1',
     'bg-white text-gray-900 shadow-lg border rounded',
     // dropdown menu visibility
     'hidden group-focus-within:block',
