@@ -17,7 +17,7 @@
             to="/blog"
             class="p-4 flex items-center text-sm font-semibold transition-colors hover:text-primary-500"
             activeClass="text-primary-500">
-            Notes
+            Blog
           </NuxtLink>
           <NuxtLink
             to="/bookmarks"
@@ -54,8 +54,10 @@
         </nav>
       </div>
     </header>
-    <main class="max-w-xl mx-auto space-y-4 py-8 md:py-16">
-      <slot />
+    <main class="flex justify-center">
+      <div class="w-full max-w-2xl m-8 md:my-16">
+        <slot />
+      </div>
     </main>
   </div>
 </template>

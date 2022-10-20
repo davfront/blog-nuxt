@@ -5,13 +5,24 @@
     </template>
     <template v-else>
       <Prose>
-        <div>
-          <NuxtLink :to="routeBase" class="flex items-center mb-2">
-            <div class="i-[ri-arrow-left-line] mr-2" />
-            <span class="text-sm font-semibold">All posts</span>
-          </NuxtLink>
-        </div>
-        <ContentDoc />
+        <article>
+          <hgroup class="mb-16">
+            <div class="flex items-center mb-2 text-sm text-gray-500">
+              <NuxtLink :to="routeBase" class="flex items-center">
+                <div class="i-[ri-arrow-left-line] mr-2" />
+                All posts
+              </NuxtLink>
+              <span class="mx-2">·</span>
+              <span>{{data.date}}</span>
+            </div>
+            <h1 class="m-0">{{data.title}}</h1>
+            <div class="mt-4 space-x-1" v-if="data.tags?.length">
+              <span v-for="tag in data.tags" class="ïnline-block bg-gray-200 text-sm text-gray-800 px-2 py-0.5 rounded">{{ tag }}</span>
+            </div>
+            <img class="mt-8" src="https://miro.medium.com/max/720/1*ajjbyowzdPmB3YUgmUkZNA.png" />
+          </hgroup>
+          <ContentDoc />          
+        </article>
       </Prose>
     </template>
   </div>
@@ -26,6 +37,8 @@ import { useRoute } from 'vue-router'
 const route = useRoute();
 const routeBase = ref('/blog');
 const isRouteBase = route.path === routeBase.value
+
+const { data } = await useAsyncData('post', () => queryContent(route.path).findOne())
 
 if (isRouteBase) {
   useHead({

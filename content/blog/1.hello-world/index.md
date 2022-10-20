@@ -1,4 +1,8 @@
-# Hello world
+---
+date: '2022-10-19'
+title: Hello world
+tags: [Ruby, JavaScript, Elixir]
+---
 
 ## Title 2
 

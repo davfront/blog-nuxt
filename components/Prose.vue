@@ -1,5 +1,5 @@
 <template>
-  <div class="prose-anchor-links prose prose-a:no-underline prose-a:text-primary-500 prose-a:transition-all prose-h1:font-bold prose-h2:font-bold prose-h3:font-bold dark:prose-invert">
+  <div class="prose-anchor-links prose !max-w-none prose-a:no-underline prose-a:text-primary-500 prose-a:transition-all prose-h1:font-bold prose-h2:font-bold prose-h3:font-bold dark:prose-invert">
     <slot />
   </div>
 </template>
