@@ -17,7 +17,7 @@
             About
           </NuxtLink>
           <NuxtLink
-            to="/blog"
+            :to="{name: 'blog-slug'}"
             :class="tw.headerNavItem"
             :activeClass="tw.headerNavItemActive"
             @click.native="closeDropdown()">

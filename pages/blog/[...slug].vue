@@ -16,12 +16,17 @@
               <span>{{data.date}}</span>
             </div>
             <h1 class="m-0">{{data.title}}</h1>
-            <div class="mt-4 space-x-1" v-if="data.tags?.length">
-              <span v-for="tag in data.tags" class="ïnline-block bg-gray-200 text-sm text-gray-800 px-2 py-0.5 rounded">{{ tag }}</span>
+            <div v-if="data.tags?.length" class="mt-4 space-x-1">
+              <span
+                v-for="tag in data.tags"
+                class="ïnline-block bg-gray-200 text-sm text-gray-600 px-2 py-0.5 rounded dark:text-gray-300 dark:bg-gray-700"
+              >
+                {{ tag }}
+              </span>
             </div>
-            <img class="mt-8" src="https://miro.medium.com/max/720/1*ajjbyowzdPmB3YUgmUkZNA.png" />
-          </header>
-          <ContentDoc />          
+            <img v-if="data.cover" class="mt-8" :src="data.cover" />
+          </header>   
+          <ContentDoc />     
         </article>
       </Prose>
     </template>
@@ -38,7 +43,7 @@ const route = useRoute();
 const routeBase = ref('/blog');
 const isRouteBase = route.path === routeBase.value
 
-const { data } = await useAsyncData('post', () => queryContent(route.path).findOne())
+const { data } = await useAsyncData('post-' + route.path, () => queryContent(route.path).findOne())
 
 if (isRouteBase) {
   useHead({

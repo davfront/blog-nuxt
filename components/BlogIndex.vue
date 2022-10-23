@@ -10,7 +10,7 @@
       class="block transition-colors hover:text-primary-500"
     >
       <span class="block text-xl font-bold">{{ post.title }}</span>
-      <span class="block text-sm text-gray-500">Published on {{ post.date }}</span>
+      <span class="block text-sm text-gray-500">{{ post.date }}</span>
     </NuxtLink>
   </div>
 </template>
@@ -18,8 +18,7 @@
 
 <script setup lang="ts">
 import Prose from "~/components/Prose.vue"
-
-const posts = await queryContent('/blog')
+const posts = await queryContent('blog')
   .only(['_path', 'title', 'date'])
   .sort({ date: -1 }) // show latest articles first
   .find();
