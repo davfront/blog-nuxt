@@ -43,7 +43,7 @@ const route = useRoute();
 const routeBase = ref('/blog');
 const isRouteBase = route.path === routeBase.value
 
-const { data } = await useAsyncData('post-' + route.path, () => queryContent(route.path).findOne())
+const { data } = await useAsyncData(`post-[${route.path}]`, () => queryContent(route.path).findOne())
 
 if (isRouteBase) {
   useHead({
