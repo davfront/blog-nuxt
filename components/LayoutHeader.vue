@@ -99,15 +99,15 @@ const tw = reactive({
   headerNav: '-mr-2 flex items-center relative group',
   headerNavToggle: [
     'flex items-center',
-    'p-4 -mr-2',
-    'text-2xl cursor-pointer',
+    'px-4 py-2 -mr-2',
+    'text-xl cursor-pointer',
     'transition-colors hover:text-primary-500 focus:text-primary-500',
     // desktop
     'md:hidden',
   ],
   headerNavPopover: [
     'absolute z-10 top-full right-0 w-56',
-    'py-2 -mt-1',
+    'py-2 mt-2',
     'bg-white text-gray-900 shadow-lg border rounded',
     // dropdown menu visibility
     'hidden group-focus-within:block',

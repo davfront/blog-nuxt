@@ -31,3 +31,10 @@
     }
   })
 </script>
+
+<style>
+/* fix tailwindcss-iconify compatibility issue with autoprefixer */
+[class^="i-\["][class$="\]"] {
+  mask-size: 100% 100%;
+}
+</style>
