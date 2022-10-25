@@ -17,7 +17,17 @@
      window.scrollTo(0, 0)
   })
 
+  // head properties
   useHead({
     titleTemplate: title => title ? `${title} - David Pereira` : 'David Pereira',
+    meta: [
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+    ],
+    htmlAttrs: {
+      lang: 'en-US'
+    }
   })
 </script>
