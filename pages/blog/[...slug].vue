@@ -13,7 +13,7 @@
                 All posts
               </NuxtLink>
               <span class="mx-2">·</span>
-              <span>{{data.date}}</span>
+              <span>{{ $dayjs(data.date).format('ll') }}</span>
             </div>
             <h1 class="m-0">{{data.title}}</h1>
             <div v-if="data.tags?.length" class="mt-4 space-x-1">

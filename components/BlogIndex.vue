@@ -10,7 +10,7 @@
       class="block transition-colors hover:text-primary-500"
     >
       <span class="block text-xl font-bold">{{ post.title }}</span>
-      <span class="block text-sm text-gray-500">{{ post.date }}</span>
+      <span class="block text-sm text-gray-500">{{ $dayjs(post.date).format('ll') }}</span>
     </NuxtLink>
   </div>
 </template>
