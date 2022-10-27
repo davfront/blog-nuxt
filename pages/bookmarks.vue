@@ -23,9 +23,9 @@
 
 <script setup lang="ts">
 import Prose from "~/components/Prose.vue"
-import { reactive } from "vue";
+import { ref } from "vue";
 
-const bookmarkConfig = reactive([
+const bookmarkConfig = ref([
   {
     category: "UX/UI",
     bookmarks: [

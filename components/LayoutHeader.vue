@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref } from 'vue'
 import { useDark, useToggle } from '@vueuse/core'
 import Logo from "~/assets/svg/logo.svg?component";
 
@@ -81,7 +81,7 @@ const closeDropdown = () => {
 }
 
 // tailwind
-const tw = reactive({
+const tw = ref({
   header: [
     'sticky z-30 top-0',
     'border-black border-b border-opacity-10',
