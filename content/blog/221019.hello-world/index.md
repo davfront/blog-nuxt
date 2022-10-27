@@ -4,4 +4,4 @@ title: Hello world
 tags: [react, vuejs, angular]
 ---
 
-The first post is coming soon...
+The first post is coming soon... :rocket:
