@@ -1,1 +1,0 @@
-file created to prevent nuxt/content error
