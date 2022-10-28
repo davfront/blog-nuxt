@@ -6,12 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.sky,
-      },
-    },
+        primary: colors.sky
+      }
+    }
   },
-  plugins: [
-    require('tailwindcss-iconify').default(),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('tailwindcss-iconify').default(), require('@tailwindcss/typography')]
 }

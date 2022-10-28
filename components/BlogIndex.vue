@@ -1,6 +1,5 @@
-
 <script setup lang="ts">
-import Prose from "~/components/Prose.vue"
+import Prose from '~/components/Prose.vue'
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
 
 const query: QueryBuilderParams = {

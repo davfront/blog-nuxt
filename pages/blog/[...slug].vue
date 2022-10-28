@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!-- Index -->
     <template v-if="isRouteBase">
       <BlogIndex />
@@ -25,7 +24,7 @@
                 <span class="mx-2">·</span>
                 <span>{{ $dayjs(doc.date).format('ll') }}</span>
               </div>
-              <h1 class="m-0">{{doc.title}}</h1>
+              <h1 class="m-0">{{ doc.title }}</h1>
               <div v-if="doc.tags?.length" class="mt-4 space-x-1">
                 <span
                   v-for="tag in doc.tags"
@@ -35,24 +34,23 @@
                 </span>
               </div>
               <img v-if="doc.cover" class="mt-8" :src="doc.cover" />
-            </header>   
+            </header>
             <ContentRenderer :value="doc" />
           </Prose>
         </template>
       </ContentDoc>
     </template>
-    
   </div>
 </template>
 
 <script setup lang="ts">
-import Prose from "~/components/Prose.vue"
-import BlogIndex from "~/components/BlogIndex.vue"
+import Prose from '~/components/Prose.vue'
+import BlogIndex from '~/components/BlogIndex.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-const route = useRoute();
-const routeBase = ref('/blog');
+const route = useRoute()
+const routeBase = ref('/blog')
 const isRouteBase = route.path === routeBase.value
 
 if (isRouteBase) {
@@ -61,4 +59,3 @@ if (isRouteBase) {
   })
 }
 </script>
-
