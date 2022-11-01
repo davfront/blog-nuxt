@@ -4,67 +4,73 @@
       <NuxtLink to="/" :class="tw.headerBrand">
         <Logo :class="tw.headerLogo" />
       </NuxtLink>
-      <div :class="tw.headerNav">
-        <a :class="tw.headerNavToggle" tabindex="0">
-          <div class="i-[ri-menu-line]" />
+      <nav :class="tw.headerNav">
+        <NuxtLink
+          :to="{ name: 'index' }"
+          :class="tw.headerNavItem"
+          :active-class="tw.headerNavItemActive"
+          title="About"
+        >
+          <span :class="tw.headerNavItemIcon">
+            <div class="i-[ri-information-line]" />
+          </span>
+          <span :class="tw.headerNavItemLabel">About</span>
+        </NuxtLink>
+        <NuxtLink
+          :to="{ name: 'blog-slug' }"
+          :class="tw.headerNavItem"
+          :active-class="tw.headerNavItemActive"
+          title="Blog"
+        >
+          <span :class="tw.headerNavItemIcon">
+            <div class="i-[ri-article-line]" />
+          </span>
+          <span :class="tw.headerNavItemLabel">Blog</span>
+        </NuxtLink>
+        <NuxtLink
+          :to="{ name: 'bookmarks' }"
+          :class="tw.headerNavItem"
+          :active-class="tw.headerNavItemActive"
+          title="Bookmarks"
+        >
+          <span :class="tw.headerNavItemIcon">
+            <div class="i-[ri-bookmark-line]" />
+          </span>
+          <span :class="tw.headerNavItemLabel">Bookmarks</span>
+        </NuxtLink>
+        <span :class="tw.headerNavSeparator"></span>
+        <a
+          href="https://github.com/davfront"
+          target="_blank"
+          :class="tw.headerNavIconItem"
+          title="Github"
+        >
+          <div class="i-[ri-github-fill]" />
         </a>
-        <nav :class="tw.headerNavPopover" tabindex="0">
-          <NuxtLink
-            to="/"
-            :class="tw.headerNavItem"
-            :activeClass="tw.headerNavItemActive"
-            @click.native="closeDropdown()"
-          >
-            About
-          </NuxtLink>
-          <NuxtLink
-            :to="{ name: 'blog-slug' }"
-            :class="tw.headerNavItem"
-            :activeClass="tw.headerNavItemActive"
-            @click.native="closeDropdown()"
-          >
-            Blog
-          </NuxtLink>
-          <NuxtLink
-            to="/bookmarks"
-            :class="tw.headerNavItem"
-            :activeClass="tw.headerNavItemActive"
-            @click.native="closeDropdown()"
-          >
-            Bookmarks
-          </NuxtLink>
-          <div :class="tw.headerNavSeparator" />
-          <div :class="tw.headerNavIconMenu">
-            <a
-              href="https://github.com/davfront"
-              target="_blank"
-              :class="tw.headerNavIconItem"
-              @click.native="closeDropdown()"
-            >
-              <div class="text-lg i-[ri-github-fill]" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/davidpereiranet/"
-              target="_blank"
-              :class="tw.headerNavIconItem"
-              @click.native="closeDropdown()"
-            >
-              <div class="text-lg i-[ri-linkedin-fill]" />
-            </a>
-            <a
-              href="mailto:contact@david-pereira.net"
-              target="_blank"
-              :class="tw.headerNavIconItem"
-              @click.native="closeDropdown()"
-            >
-              <div class="text-lg i-[ri-mail-line]" />
-            </a>
-            <a :class="tw.headerNavIconItem" @click="toggleDark()" @click.native="closeDropdown()">
-              <div class="text-lg" :class="isDark ? 'i-[ri-moon-line]' : 'i-[ri-sun-line]'" />
-            </a>
-          </div>
-        </nav>
-      </div>
+        <a
+          href="https://www.linkedin.com/in/davidpereiranet/"
+          target="_blank"
+          :class="tw.headerNavIconItem"
+          title="Linkedin"
+        >
+          <div class="i-[ri-linkedin-fill]" />
+        </a>
+        <a
+          href="mailto:contact@david-pereira.net"
+          target="_blank"
+          :class="tw.headerNavIconItem"
+          title="Send an email"
+        >
+          <div class="i-[ri-mail-line]" />
+        </a>
+        <a
+          :class="tw.headerNavIconItem"
+          :title="`Switch to ${isDark ? 'light' : 'dark'} mode`"
+          @click="toggleDark()"
+        >
+          <div :class="isDark ? 'i-[ri-moon-line]' : 'i-[ri-sun-line]'" />
+        </a>
+      </nav>
     </div>
   </header>
 </template>
@@ -78,17 +84,13 @@ import Logo from '~/assets/svg/logo.svg?component'
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
-// dropdown
-const closeDropdown = () => {
-  document.activeElement.blur()
-}
-
 // tailwind
 const tw = ref({
   header: [
     'sticky z-30 top-0',
     'border-black border-b border-opacity-10',
     'bg-white bg-opacity-75 backdrop-blur',
+    'overflow-x-auto',
     // dark
     'dark:bg-gray-900 dark:bg-opacity-75 dark:border-white dark:border-opacity-10'
   ],
@@ -99,48 +101,37 @@ const tw = ref({
   ],
   headerBrand: 'block mr-auto',
   headerLogo: 'h-8 fill-primary',
-  headerNav: '-mr-2 flex items-center relative group',
-  headerNavToggle: [
+  headerNav: 'ml-2 -mr-2 flex items-center relative group',
+  headerNavItem: [
+    'flex-shrink-0',
     'flex items-center',
-    'px-4 py-2 -mr-2',
-    'text-xl cursor-pointer',
-    'transition-colors hover:text-primary-500 focus:text-primary-500',
+    'p-3',
+    'text-sm select-none',
+    'transition-colors hover:text-primary-500',
+    // desktop
+    'md:px-5'
+  ],
+  headerNavItemIcon: [
+    'text-xl',
     // desktop
     'md:hidden'
   ],
-  headerNavPopover: [
-    'absolute z-10 top-full right-0 w-56',
-    'py-2 mt-2',
-    'bg-white text-gray-900 shadow-lg border rounded',
-    // dropdown menu visibility
-    'hidden group-focus-within:block',
+  headerNavItemLabel: [
+    'hidden',
     // desktop
-    'md:static md:w-auto md:bg-transparent md:text-inherit md:shadow-none md:border-0',
-    'md:m-0',
-    'md:!flex md:items-center'
+    'md:inline'
   ],
-  headerNavItem: [
-    'flex items-center',
-    'px-5 py-3',
-    'text-sm select-none',
-    'transition-colors hover:bg-gray-100',
-    // desktop
-    'md:hover:bg-transparent md:hover:text-primary-500'
-  ],
-  headerNavItemActive: [
-    'font-semibold !text-primary-600 !bg-primary-100',
-    // desktop
-    'md:!text-primary-500 md:!bg-transparent'
-  ].join(' '),
+  headerNavItemActive: 'font-semibold text-primary-500',
   headerNavSeparator: [
-    'block h-[1px]',
+    'hidden',
+    'h-6 w-[1px]',
     'bg-black',
     'opacity-10',
-    'my-2',
+    'mx-4',
     // dark
     'dark:bg-white',
     // desktop
-    'md:h-6 md:w-[1px] md:my-0 md:mx-4'
+    'md:block'
   ],
   headerNavIconMenu: [
     'flex items-center justify-between',
@@ -152,10 +143,10 @@ const tw = ref({
     'flex-shrink-0',
     'p-3',
     'flex items-center',
-    'text-sm font-semibold cursor-pointer',
+    'text-xl cursor-pointer',
     'transition-colors hover:text-primary-500',
     // desktop
-    'md:px-4'
+    'md:text-lg'
   ]
 })
 </script>
