@@ -21,13 +21,13 @@ const isExternalLink = computed(() => {
   <NuxtLink
     :href="href"
     :target="isExternalLink ? '_blank' : undefined"
-    :class="{ isExternalLink: 'mr-[1.5em]' }"
+    :class="{ 'mr-[1.5em]': isExternalLink }"
   >
     <slot />
     <span v-if="isExternalLink" class="absolute inline-flex items-center">
       &nbsp;
       <div
-        class="i-[ri-external-link-line] inline-block text-gray-400 dark:text-gray-500 translate-y-[1px]"
+        class="i-[ri-external-link-line] inline-block text-gray-400 dark:text-gray-500 translate-y-[1px] translate-x-[-1px]"
       />
     </span>
   </NuxtLink>
