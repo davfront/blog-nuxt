@@ -18,7 +18,9 @@
             <header class="mb-16">
               <div class="flex items-center mb-2 text-sm text-gray-500">
                 <NuxtLink :to="routeBase" class="flex items-center">
-                  <div class="i-[ri-arrow-left-line] mr-2" />
+                  <span class="mr-2">
+                    <div class="i-[ri-arrow-left-line]" />
+                  </span>
                   All posts
                 </NuxtLink>
                 <span class="mx-2">·</span>
@@ -28,7 +30,8 @@
               <div v-if="doc.tags?.length" class="mt-4 space-x-1">
                 <span
                   v-for="tag in doc.tags"
-                  class="ïnline-block bg-gray-200 text-sm text-gray-600 px-2 py-0.5 rounded dark:text-gray-300 dark:bg-gray-700"
+                  :key="tag"
+                  class="inline-block bg-gray-200 text-sm text-gray-600 px-2 py-0.5 rounded dark:text-gray-300 dark:bg-gray-700"
                 >
                   {{ tag }}
                 </span>

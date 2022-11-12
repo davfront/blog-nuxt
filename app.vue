@@ -33,9 +33,13 @@ useHead({
 })
 </script>
 
-<style>
+<style lang="scss">
 /* fix tailwindcss-iconify compatibility issue with autoprefixer */
 [class^='i-\['][class$='\]'] {
   mask-size: 100% 100%;
+  &:where(span, i) {
+    display: inline-block;
+    vertical-align: -0.2em;
+  }
 }
 </style>

@@ -2,7 +2,9 @@
 <template>
   <div class="py-1 px-6 border-l-[6px]" :class="alertClass" role="alert">
     <p class="font-bold uppercase mb-0 flex items-center">
-      <span class="inline-block text-3xl mr-4 mt-[1px]" :class="[iconClass, iconColorClass]" />
+      <span class="inline-block text-3xl mr-4 -my-2 translate-y-[-2px]" :class="iconColorClass">
+        <span :class="iconClass" />
+      </span>
       {{ title }}
     </p>
     <slot />
@@ -50,15 +52,15 @@ const iconClass = computed(() => {
 
 const iconColorClass = computed(() => {
   if (props.type === 'success') {
-    return 'bg-green-500'
+    return 'text-green-500'
   }
   if (props.type === 'warning') {
-    return 'bg-orange-500'
+    return 'text-orange-500'
   }
   if (props.type === 'danger') {
-    return 'bg-red-500'
+    return 'text-red-500'
   }
-  return 'bg-blue-500'
+  return 'text-blue-500'
 })
 
 const title = computed(() => {
