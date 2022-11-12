@@ -105,6 +105,11 @@ Create a **.prettierrc** file with and configure the desired [format rules](http
 }
 ```
 
-## Notes
+---
 
+::alert
+---
+title: Note
+---
 It is not recommended to use the prettier plugin **eslint-plugin-prettier**.
+::
