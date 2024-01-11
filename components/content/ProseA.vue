@@ -26,11 +26,11 @@ const isExternalLink = computed(() => {
     <slot />
     <span v-if="isExternalLink" class="absolute inline-flex items-center">
       &nbsp;
-      <div
-        class="inline-block text-gray-400 dark:text-gray-500 translate-y-[1px] translate-x-[-1px]"
+      <span
+        class="inline-block text-gray-400 dark:text-gray-500 translate-y-[-1px] translate-x-[-1px]"
       >
-        <div class="i-[ri-external-link-line]" />
-      </div>
+        <span class="i-[ri-external-link-line]" />
+      </span>
     </span>
   </NuxtLink>
 </template>
