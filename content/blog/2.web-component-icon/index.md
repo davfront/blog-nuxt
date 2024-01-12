@@ -30,7 +30,7 @@ title: Note
 The following snippet demonstrates creating a basic Web Component named `<wc-icon>`:
 
 ```js
-class WcUser extends HTMLElement {
+class WcIcon extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -59,7 +59,7 @@ The Shadow DOM is used for encapsulation, ensuring the component's style and beh
 To add the component to the page, you need to register it with the browser using the `customElements.define()` method:
 
 ```js
-customElements.define('wc-icon', WcUser);
+customElements.define('wc-icon', WcIcon);
 ```
 
 You can then use the `<wc-icon>` element in your HTML:
@@ -104,7 +104,7 @@ class WcIcon extends HTMLElement {
   }
 
   connectedCallback() {
-    this.#attrs.name = this.getAttribute('name');
+    this.#name = this.getAttribute('name');
     this.#render();
   }
 
@@ -115,12 +115,12 @@ class WcIcon extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
     
-    this.#attrs.name = newValue;
-    this.render();
+    this.#name = newValue;
+    this.#render();
   }
 
   #render() {
-    let iconSvg = WcIcon.#icons[this.#attrs.name];
+    let iconSvg = WcIcon.#icons[this.#name];
     if (!iconSvg) {
       iconSvg = WcIcon.#fallbackIcon;
     }
@@ -178,6 +178,11 @@ class WcIcon extends HTMLElement {
 
   #attrs = {};
 
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
   connectedCallback() {
     this.#attrs.name = this.getAttribute('name');
     this.#attrs.scale = this.getAttribute('scale');
@@ -194,7 +199,7 @@ class WcIcon extends HTMLElement {
     if (oldValue === newValue) return;
     
     this.#attrs[name] = newValue;
-    this.render();
+    this.#render();
   }
 
   #render() {
@@ -291,12 +296,20 @@ async #render() {
 These enhancements not only improve the functionality and flexibility of the WcIcon component but also ensure it can be seamlessly integrated into a variety of web projects, catering to different design needs and performance considerations.
 
 
+## Live demo
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="Icon System with Web Components" src="https://codepen.io/davfront/embed/MWxbazK?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/davfront/pen/MWxbazK">
+  Icon System with Web Components</a> by David Pereira (<a href="https://codepen.io/davfront">@davfront</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+
 ---
 
 
 ## Resources
 
-<!-- - [live demo](https://codepen.io/kevin-powell/pen/GRZQqQq)
-- [Source Code](https://github.com) -->
+- [Live demo](https://codepen.io/davfront/pen/MWxbazK)
 - [Web Components](https://javascript.info/web-components) - A comprehensive guide to Web Components.
-- [icones.js.org](https://icones.js.org/) - A collection of SVG icons for popular brands.
+- [Icones.js.org](https://icones.js.org/) - A collection of SVG icons for popular brands.
