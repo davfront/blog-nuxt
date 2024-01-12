@@ -2,10 +2,10 @@
   <Prose>
     <h1>Bookmarks</h1>
 
-    <section v-for="(category, index) in bookmarkConfig" :key="index">
+    <section v-for="(category, catIndex) in bookmarkConfig" :key="catIndex">
       <h3>{{ category.category }}</h3>
       <ul>
-        <li v-for="bookmark in category.bookmarks" :key="index">
+        <li v-for="(bookmark, bmkIndex) in category.bookmarks" :key="bmkIndex">
           <a :href="bookmark.url" target="_blank" :title="bookmark.title">
             {{ bookmark.title }}
           </a>
@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import Prose from '~/components/Prose.vue'
 import { ref } from 'vue'
+import Prose from '~/components/Prose.vue'
 
 const bookmarkConfig = ref([
   {
@@ -38,6 +38,31 @@ const bookmarkConfig = ref([
         title: 'Iconify',
         url: 'https://iconify.design',
         description: 'All popular icon sets in one framework'
+      },
+      {
+        title: 'Icones.js.org',
+        url: 'https://icones.js.org',
+        description: '700+ SVG icons for popular brands'
+      }
+    ]
+  },
+  {
+    category: 'Development',
+    bookmarks: [
+      {
+        title: 'Javascript.info',
+        url: 'https://javascript.info',
+        description: 'Modern JavaScript Tutorial'
+      }
+    ]
+  },
+  {
+    category: 'Tools',
+    bookmarks: [
+      {
+        title: 'Caniuse.com',
+        url: 'https://caniuse.com',
+        description: 'Browser support tables for modern web technologies'
       }
     ]
   }
