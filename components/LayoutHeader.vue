@@ -48,6 +48,14 @@
           <div class="i-[ri-github-fill]" />
         </a>
         <a
+          href="https://codepen.io/davfront"
+          target="_blank"
+          :class="tw.headerNavIconItem"
+          title="Codepen"
+        >
+          <div class="i-[ri-codepen-fill]" />
+        </a>
+        <a
           href="https://www.linkedin.com/in/davidpereiranet/"
           target="_blank"
           :class="tw.headerNavIconItem"
