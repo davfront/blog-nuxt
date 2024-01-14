@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Prose from '~/components/Prose.vue'
 import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
+import Prose from '~/components/Prose.vue'
 
 const query: QueryBuilderParams = {
   path: '/blog',
-  only: ['_path', 'title', 'date'],
+  only: ['_path', 'title', 'date', 'cover'],
   sort: [{ date: -1 }]
 }
 </script>
@@ -19,10 +19,22 @@ const query: QueryBuilderParams = {
         v-for="post in list"
         :key="post._path"
         :to="post._path"
-        class="block transition-colors hover:text-primary-500"
+        class="block transition-colors hover:text-primary-500 flex items-start"
       >
-        <span class="block text-xl font-bold">{{ post.title }}</span>
-        <span class="block text-sm text-gray-500">{{ $dayjs(post.date).format('ll') }}</span>
+        <div
+          class="w-24 aspect-[4/3] relative bg-gray-200 dark:bg-gray-800 flex-none mr-4 hidden sm:block"
+        >
+          <img
+            v-if="post.cover"
+            class="block w-full h-full object-cover"
+            :src="post.cover"
+            :alt="post.title"
+          />
+        </div>
+        <div>
+          <span class="block text-xl font-bold mt-1">{{ post.title }}</span>
+          <span class="block text-sm text-gray-500 mt-1">{{ $dayjs(post.date).format('ll') }}</span>
+        </div>
       </NuxtLink>
     </ContentList>
   </div>

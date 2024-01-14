@@ -2,6 +2,7 @@
 date: '2024-01-11'
 title: Build a SVG Icon System with Vanilla Javascript
 tags: [JavaScript, Web components, Custom Elements, SVG, Icons]
+cover: /covers/icon-web-component.jpg
 ---
 
 In this article, we'll delve into implementing a dynamic icon component, harnessing the power and simplicity of Web components. No need for frameworks or libraries, just plain old vanilla JavaScript.

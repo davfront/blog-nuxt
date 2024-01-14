@@ -36,7 +36,7 @@
                   {{ tag }}
                 </span>
               </div>
-              <img v-if="doc.cover" class="mt-8" :src="doc.cover" />
+              <img v-if="doc.cover" class="mt-8 w-full aspect-video object-cover" :src="doc.cover" />
             </header>
             <ContentRenderer :value="doc" />
           </Prose>
@@ -47,10 +47,10 @@
 </template>
 
 <script setup lang="ts">
-import Prose from '~/components/Prose.vue'
-import BlogIndex from '~/components/BlogIndex.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import Prose from '~/components/Prose.vue'
+import BlogIndex from '~/components/BlogIndex.vue'
 
 const route = useRoute()
 const routeBase = ref('/blog')

@@ -95,7 +95,7 @@ const toggleDark = useToggle(isDark)
 // tailwind
 const tw = ref({
   header: [
-    'sticky z-30 top-0',
+    'sticky z-30 inset-x-0 top-0',
     'border-black border-b border-opacity-10',
     'bg-white bg-opacity-75 backdrop-blur',
     'overflow-x-auto',
